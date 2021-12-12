@@ -1,20 +1,43 @@
 import React from "react";
 import { GlobalStyles } from "./styles/GlobalReset";
 import { FormProvider } from "./Providers/FormProvider";
-import { Form } from "./components/Form/Form.component";
+import { Form, FormProps } from "./components/Form/Form.component";
 import { ThemeProvider } from "./Providers/ThemeProvider";
+// import { Card } from "./components/Card/Card.component";
 
-function App() {
+
+
+
+const FormCard: React.FC<FormProps> = ({onSubmitForm, ButtonSubmit, initialData, inputCSS,inputClass, labelAnimate,themeType}): JSX.Element => {
     return (
-        <React.Fragment>
-            <GlobalStyles />
-                <ThemeProvider>
-                    <FormProvider>
-                        <Form />
-                    </FormProvider>
-                </ThemeProvider>
-        </React.Fragment>
-    );
+        <ThemeProvider>
+            <FormProvider>
+                <GlobalStyles />
+                <Form 
+                    onSubmitForm={onSubmitForm} 
+                    labelAnimate={labelAnimate} 
+                    initialData={initialData} 
+                    ButtonSubmit={ButtonSubmit} 
+                    inputCSS={inputCSS}
+                    themeType={themeType}
+                    inputClass={inputClass}
+                />
+            </FormProvider>
+        </ThemeProvider> 
+    )
 }
 
-export default App;
+export { FormCard }
+
+// function App() {
+//     return (
+//         <React.Fragment>
+
+//                 <Card />
+
+              
+//         </React.Fragment>
+//     );
+// }
+
+// export default App;

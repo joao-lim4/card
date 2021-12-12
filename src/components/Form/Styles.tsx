@@ -41,31 +41,61 @@ export const ImagePosition = styled.img`
 export const DefaultInput = styled.input`
     width: 100%;
     height: 45px;
-    border-radius: ${({theme}: {theme: InitialThemeValueType}) => theme.input.default.border.radius };
-    border: ${({theme, error}: {theme: InitialThemeValueType, error: boolean}) => ( !error ? theme.input.default.border.default : theme.input.error.border.default)};
-    box-shadow: ${({theme, error}: {theme: InitialThemeValueType, error: boolean}) => ( !error ? theme.shadows.default : theme.input.error.shadow)};
+    border-radius: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].input.default.border.radius };
+    border: ${({theme, error, themeType}: {theme: InitialThemeValueType, error: boolean, themeType: "dark" | "light"}) => ( !error ? theme[themeType].input.default.border.default : theme[themeType].input.error.border.default)};
+    box-shadow: ${({theme, error, themeType}: {theme: InitialThemeValueType, error: boolean, themeType: "dark" | "light"}) => ( !error ? theme[themeType].shadows.default : theme[themeType].input.error.shadow)};
     padding: 0px 10px;
-    transition: ${({theme}: {theme: InitialThemeValueType}) => theme.transitions.fast};
-    font-family: ${({theme}: {theme: InitialThemeValueType}) => theme.font.default};
-    color: ${({theme}: {theme: InitialThemeValueType}) => theme.font.default};
+    transition: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].transitions.fast};
+    font-family: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].font.default};
+    color: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].colors.secondary};
+    background: transparent;
 
     &:focus {
-        border: ${({theme }: {theme: InitialThemeValueType, }) => theme.efects.input.focus.border};
+        border: ${({theme,themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].efects.input.focus.border};
         outline: 0;
-        box-shadow: ${({theme}: {theme: InitialThemeValueType}) => theme.efects.input.focus.shadow};
+        box-shadow: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].efects.input.focus.shadow};
     }
 `
 
 export const FormGroup = styled.div`
     width: 100%;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     position:relative;
 `;
 
 export const SmallMessage = styled.small`
-    font-family: ${({theme}: {theme: InitialThemeValueType}) => theme.font.default};
+    font-family: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].font.default};
     display: inline-block;
     color: #f70000;
     margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 1rem;
 `
+
+export const ButtonDefault = styled.button`
+    height: 45px;
+    width: calc(50% - 10px);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].button.bgColor.primary};
+    border: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].button.border.default};
+    border-radius: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].button.border.radius};
+    color: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].colors.primary};
+    font-family: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].font.default};
+    box-shadow: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].shadows.default};
+`;
+
+export const Label = styled.label`
+    position: absolute;
+    transition: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].transitions.fast};
+    font-size: 1rem;
+    font-family: ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].font.default};
+    left: 3%;
+    color: ${({activeAnimation, theme, themeType}: {activeAnimation: boolean, theme: InitialThemeValueType, themeType: "dark" | "light"}) => !activeAnimation ? theme[themeType].colors.grey : theme[themeType].colors.secondary};
+    z-index: ${({activeAnimation, theme}: {activeAnimation: boolean, theme: InitialThemeValueType, themeType: "dark" | "light"}) => !activeAnimation ? -1 : 1};
+    top: ${({activeAnimation, theme}: {activeAnimation: boolean, theme: InitialThemeValueType, themeType: "dark" | "light"}) => !activeAnimation ? '50%' : '-60%'};
+    padding: 0px 5px 0px 5px;
+    transform: ${({activeAnimation}: {activeAnimation: boolean}) => !activeAnimation ? 'translate(-3%, -50%)' : 'translate(-3%, 60%)'};
+    background:  ${({theme, themeType}: {theme: InitialThemeValueType, themeType: "dark" | "light"}) => theme[themeType].colors.primary};
+`;

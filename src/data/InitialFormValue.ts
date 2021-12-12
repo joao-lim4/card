@@ -43,7 +43,7 @@ interface ValidateType  {
     name: formValidateType
 }
 
-interface cardType {
+export interface cardType {
     [key: string]: any,
     dataValue: string 
     encode: {
@@ -60,12 +60,21 @@ interface cardType {
     typeOfbandeira: string | undefined
 }
 
+
+interface labelActiveType {
+    numberCard: boolean;
+    cvv: boolean;
+    validate: boolean;
+    name: boolean
+}
+
 export interface InitialFormValueType {
     formValue: formValueType,
     length: lengthType,
     maxLength: maxLengthType,
     validate: ValidateType,
-    cardType: cardType
+    cardType: cardType,
+    labelActive: labelActiveType
 }
 
 export const InitialFormValue: InitialFormValueType = {
@@ -116,6 +125,12 @@ export const InitialFormValue: InitialFormValueType = {
             valueOffMask: ""
         },
         typeOfbandeira: undefined
+    },
+    labelActive: {
+        cvv: false,
+        name: false,
+        numberCard: false,
+        validate: false,
     }
 };
 

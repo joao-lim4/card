@@ -1,8 +1,9 @@
 import Validate from "validate-flag";
 import { formValidateType, InitialFormValue, InitialFormValueType } from "../data/InitialFormValue";
 
+
 export type ActionTypeReducer = {
-    type: "update-form" | "update-validate" | "init-state" | "update-error" | "update-card-type" | "reset-card-type";
+    type: "update-form" | "update-validate" | "init-state" | "update-error" | "update-card-type" | "reset-card-type" | "update-label-active";
     fildName?: "numberCard" | "cvv" | "validate" | "payload" | "name";
     payload: any
 }
@@ -122,6 +123,17 @@ const FormReducer = (state: InitialFormValueType, action: ActionTypeReducer) => 
             return {
                 ...state,
                 cardType: InitialFormValue.cardType
+            } as InitialFormValueType;
+        }
+
+
+        case "update-label-active": {
+            return {
+                ...state,
+                labelActive: {
+                    ...state.labelActive,
+                    [fildName!]: payload
+                }
             } as InitialFormValueType;
         }
         default:
