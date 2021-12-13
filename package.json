@@ -1,7 +1,7 @@
 {
   "name": "template-credit-card",
-  "version": "0.3.0",
-  "main": "index.js",
+  "version": "0.6.0",
+  "main": "./dist/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
